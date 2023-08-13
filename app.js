@@ -7,7 +7,7 @@ const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
 const { notFoundHandler, errorHandler } = require('./src/middleware/errorHandlers');
 const setupSession = require('./src/config/sessionConfig');
-const { accessSecretVersion } = require('./src/config/secretManager');
+const { getSessionSecret, getFirebaseApiKey } = require('./src/config/secretManager');
 const setupStaticFiles = require('./src/config/staticConfig');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -23,7 +23,8 @@ async function initApp() {
     const app = express();
 
     // Setting up the session
-    const sessionSecret = NODE_ENV === 'production' ? await accessSecretVersion() : 'local-secret-key';
+    const sessionSecret = NODE_ENV === 'production' ? await getSessionSecret() : process.env.LOCAL_PROJECT_ID;
+    process.env.FIREBASE_API_KEY = NODE_ENV === 'production' ? await getFirebaseApiKey() : process.env.LOCAL_FIREBASE_API_KEY;
     setupSession(app, sessionSecret);
 
     // Middleware for parsing JSON and urlencoded form data

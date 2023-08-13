@@ -1,10 +1,10 @@
+const { get } = require('http');
 const datastore = require('../config/datastore');
 const Repository = require('./Repository');
-
+const KIND = 'MJImage'
 class MJMessageRepository extends Repository{
 
     async saveMessage(mjMessage) {
-        const kind = 'MJImage';
         const data =
         {
             uri: mjMessage.uri,
@@ -18,7 +18,11 @@ class MJMessageRepository extends Repository{
             width: mjMessage.width,
             height: mjMessage.height
         }
-        await this.saveEntity(kind, data);
+        await this.saveEntity(KIND, data);
+    }
+
+    async getMessageById(id) {
+        return super.getMessageById(KIND, id);
     }
 
     // Additional methods like getById, delete, etc.

@@ -29,6 +29,16 @@ class MJMessageModel {
         }
     }
 
+    static async getById(id) {
+
+        const msg = await MJMessageRepository.getMessageById(id);
+        
+        if (msg) {
+            return new MJMessageModel(msg);
+        } else {
+            throw new Error('Request failed!');
+        }
+    }
     // Add any other methods you need for this model here, like delete(), getById(), etc.
 }
 

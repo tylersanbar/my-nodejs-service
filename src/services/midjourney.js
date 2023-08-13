@@ -1,13 +1,6 @@
-// import { Midjourney } from "midjourney";
 const Midjourney = require("midjourney");
 require('dotenv').config();
-/**
- *
- * a simple example of how to use the imagine command
- * ```
- * npx tsx example/imagine.ts
- * ```
- */
+
 async function imagine(prompt) {
   try {
     const client = new Midjourney.Midjourney({

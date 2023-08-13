@@ -4,8 +4,9 @@ exports.index = function(req, res) {
     res.render('imagine', { pageTitle: 'Imagine', loggedIn: false, viewCss: '/css/imagine.css' });
 };
 
-exports.view = function(req, res) {
-    res.render('image', { id: req.params.id, pageTitle: 'View Image', viewCss: '/css/image.css' });
+exports.view = async function(req, res) {
+    const msg = await MJMessageModel.getById(req.params.id);
+    res.render('image', { url: msg.url, pageTitle: 'View Image', viewCss: '/css/image.css' });
 };
 
 exports.generate = async function(req, res) {
@@ -17,7 +18,7 @@ exports.generate = async function(req, res) {
         if (mjMessage) {
             await mjMessage.save();
             console.log("Saved successfully!");
-            res.render('generate', { id: mjMessage.id, pageTitle: 'Generate Image', viewCss: '/css/generate.css' });
+            res.redirect('/imagine/image/view/' + mjMessage.id);
         } else {
             res.status(400).send("Image creation failed.");
         }
@@ -25,8 +26,4 @@ exports.generate = async function(req, res) {
         console.error("Error in generate:", error);
         res.status(500).send("Internal Server Error");
     }
-}
-
-exports.status = function(req, res) {
-    // Implementation for status
 }

@@ -14,11 +14,6 @@ class Repository {
 
         while (attempt < MAX_RETRIES) {
             try {
-                // Check if GOOGLE_APPLICATION_CREDENTIALS is set
-                // if (!process.env.GOOGLE_APPLICATION_CREDENTIALS) {
-                //     throw new Error("Environment variable GOOGLE_APPLICATION_CREDENTIALS is not set.");
-                // }
-
                 await datastore.save(entity);
                 console.log(`Saved ${kind} with ID: ${textKey.id}`);
                 break; // Exit the loop if successful
@@ -36,6 +31,13 @@ class Repository {
                 await new Promise(resolve => setTimeout(resolve, 2000));
             }
         }
+    }
+
+    async getMessageById(kind, id) {
+        console.log("getMessageById:", id);
+        const query = datastore.createQuery(kind).filter('id', '=', parseInt(id, 10));
+        const [result] = await datastore.runQuery(query);
+        return result[0];
     }
 
     // Additional methods like getById, delete, etc.
