@@ -1,0 +1,42 @@
+/* General body styling */
+body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+/* Global properties and keyframes */
+@property --a {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 10deg;
+}
+
+@keyframes gradient {
+    from {
+        --a: 0deg;
+    }
+
+    to {
+      --a:360deg;
+    }
+}
+
+/* General anchor styling */
+a {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    text-decoration: none;
+    color: white;
+    background-color: #af4261;
+    border-radius: 50px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+    background-color: #42AF90;
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-7px);
+}

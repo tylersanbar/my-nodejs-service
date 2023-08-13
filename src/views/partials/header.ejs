@@ -1,0 +1,26 @@
+<header class="top-menu">
+    <!-- Logo Link to Homepage -->
+    <a href="/" class="logo-link">
+        <img src="/images/logo.png" alt="Company Logo" class="logo-image" />
+    </a>
+
+    <!-- Non-linked Page Title -->
+    <span class="home-title"><%= pageTitle %></span>
+
+    <nav>
+        <!-- Profile/Login Logic -->
+        <% if (loggedIn) { %>
+            <div class="user-dropdown">
+                <button>Profile ▼</button> <!-- Display user's name with a dropdown arrow -->
+                <div class="user-dropdown-content">
+                    <a href="/profile">Profile</a>
+                    <!-- Add more links as necessary -->
+                    <a href="/settings">Settings</a>
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+        <% } else { %>
+            <a href="/user/login" class="<%= pageTitle === 'Login' ? 'active' : '' %>">Login</a>
+        <% } %>
+    </nav>
+</header>

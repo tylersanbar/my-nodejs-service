@@ -1,0 +1,86 @@
+.top-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    padding: 10px 20px;
+    border-bottom: 1px solid #af4261;
+}
+
+.left-section {
+    display: flex;
+    align-items: center;
+}
+
+/* Styling for the logo link to the homepage */
+.logo-link {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none; /* Remove any underline from the link */
+    margin-right: 15px;
+
+    /* Added to ensure no button effect */
+    box-shadow: none;
+    transition: none;
+}
+
+.logo-link:hover {
+    border: none !important;
+    box-shadow: none !important;
+    background: none !important;
+}
+
+.logo-image {
+    height: 60px;  /* Adjust as required */
+    width: auto;   /* maintain aspect ratio */
+    margin-right: 10px; /* Space between the logo and the title */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transform on hover and shadow */
+}
+
+.logo-link:hover .logo-image {
+    transform: scale(1.1); /* Enlarge a little on hover */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15); /* Add a subtle shadow on hover */
+}
+
+/* Styling for the page title */
+.home-title {
+    color: #42AF90; /* Color taken from your previous styles, adjust if necessary */
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 0; /* Removing default margins */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Optional: gives a subtle shadow for better legibility */
+}
+
+.home-link {
+    background: -webkit-linear-gradient(45deg, #af4261, #42AF90);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-right: 20px; /* Some spacing between home link and title */
+    text-decoration: none;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.home-link:hover {
+    transform: scale(1.05);
+}
+
+.menu-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    background: -webkit-linear-gradient(45deg, #42AF90, #af4261);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: transform 0.3s ease;
+}
+
+.menu-title:hover {
+    transform: scale(1.05);
+}

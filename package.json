@@ -1,0 +1,36 @@
+{
+  "name": "my-nodejs-service",
+  "version": "1.0.0",
+  "description": "Website for arbitarylogic.dev",
+  "main": "app.js",
+  "watch": {
+    "start": {
+      "patterns": [
+        "src",
+        "app.js"
+      ],
+      "extensions": "js,jsx"
+    }
+  },
+  "scripts": {
+    "start": "node app.js",
+    "watch": "npm-watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tyler Sanbar",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/datastore": "^7.5.1",
+    "@google-cloud/secret-manager": "^5.0.0",
+    "@types/node": "^20.4.8",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
+    "firebase": "^10.1.0",
+    "firebase-admin": "^11.10.1",
+    "midjourney": "^4.3.11",
+    "npm-watch": "^0.11.0"
+  }
+}

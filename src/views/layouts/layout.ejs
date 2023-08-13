@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= pageTitle %></title>
+    <!-- Common CSS -->
+    <link rel="stylesheet" type="text/css" href="/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="/css/header.css" />
+    
+    <!-- Specific CSS for the view, if provided -->
+    <% if (typeof viewCss !== 'undefined') { %>
+        <link rel="stylesheet" type="text/css" href="<%= viewCss %>" />
+    <% } %>
+</head>
+<body>
+
+<%- include('../partials/header', { pageTitle: pageTitle, loggedIn: loggedIn }) %>
+
+<%- body %>
+
+</body>
+</html>

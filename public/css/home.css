@@ -1,0 +1,20 @@
+/* Unique H1 styles */
+h1 {
+    --a: 0deg;
+    font-size: 2.5em;
+    background: -webkit-linear-gradient(var(--a), #42AF90, #af4261);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    padding: 50px 0;
+    animation: gradient 8s linear infinite;
+}
+
+/* Specific style for link-container */
+.link-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
