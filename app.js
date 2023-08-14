@@ -5,7 +5,7 @@ console.log("Starting app.js");
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const path = require('path');
-const { notFoundHandler, errorHandler } = require('./src/middleware/errorHandlers');
+const { errorHandler } = require('./src/middleware/errorHandlers');
 const setupSession = require('./src/config/sessionConfig');
 const { getSessionSecret, getFirebaseApiKey } = require('./src/config/secretManager');
 const setupStaticFiles = require('./src/config/staticConfig');
@@ -46,7 +46,6 @@ async function initApp() {
     require("./src/routes")(app);
 
     // Error handlers
-    app.use(notFoundHandler);
     app.use(errorHandler);
 
     // Start the server

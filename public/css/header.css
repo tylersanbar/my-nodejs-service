@@ -84,3 +84,52 @@
 .menu-title:hover {
     transform: scale(1.05);
 }
+
+/* User Dropdown Styles */
+.user-dropdown {
+    position: relative; /* Set to relative so the dropdown content can be positioned absolutely */
+    display: inline-block; /* Allows for the dropdown to fit its content */
+}
+
+.user-dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute; /* Positioned relative to the .user-dropdown container */
+    top: 100%; /* Positioned right below the button */
+    left: 0; /* Aligned to the left of the button */
+    z-index: 1; /* Ensures the dropdown appears above other content */
+    border: 1px solid #af4261; /* Border color */
+    background-color: #ffffff; /* Background color of the dropdown */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Optional: Add a shadow for a floating effect */
+    min-width: 160px; /* Minimum width of the dropdown */
+}
+
+.user-dropdown-content a {
+    color: black; /* Text color */
+    padding: 12px 16px; /* Padding for each link */
+    text-decoration: none; /* Remove underline */
+    display: block; /* Makes each link take up the full width of the dropdown */
+}
+
+.user-dropdown-content a:hover {
+    background-color: #f1f1f1; /* Background color change on hover */
+}
+
+.user-dropdown:hover .user-dropdown-content {
+    display: block; /* Show the dropdown when hovering over the .user-dropdown container */
+}
+
+/* Styling for the dropdown button */
+.user-dropdown button {
+    background-color: #42AF90; /* Adjust as necessary */
+    color: white; /* Text color */
+    padding: 10px 16px; /* Padding */
+    border: none; /* Remove border */
+    cursor: pointer; /* Hand cursor on hover */
+    outline: none; /* Remove focus outline */
+    transition: background-color 0.3s ease; /* Smooth background color transition on hover */
+}
+
+.user-dropdown button:hover {
+    background-color: #af4261; /* Change background color on hover */
+}
+

@@ -6,15 +6,35 @@ const { ValidationError } = require('../utils/customErrors');
 exports.viewLogin = function(req, res) {
     res.render('login', {
         pageTitle: 'Login', 
-        loggedIn: req.session.loggedIn || false,
         viewCss: '/css/login-form.css'
     });
 };
 
+exports.viewLogout = function(req, res) {
+    req.session.loggedIn = false;
+    res.render('logout', {
+        pageTitle: 'Logout',
+        //viewCss: '/css/logout.css'
+    });
+}
+
+exports.viewProfile = function(req, res) {
+    res.render('profile', {
+        pageTitle: 'Profile',
+        //viewCss: '/css/profile.css'
+    });
+}
+
+exports.viewSettings = function(req, res) {
+    res.render('settings', {
+        pageTitle: 'Settings',
+        viewCss: '/css/settings.css'
+    });
+}
+
 exports.viewSignup = function(req, res) {
     res.render('signup', {
         pageTitle: 'Sign Up',
-        loggedIn: req.session.loggedIn || false,
         viewCss: '/css/signup-form.css'
     });
 };
@@ -22,7 +42,6 @@ exports.viewSignup = function(req, res) {
 exports.login = async function(req, res, next) {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, req.body.email, req.body.password);
-        console.log("User:", userCredential.user);
         req.session.loggedIn = true;
         // Redirect to the referring page or the homepage
         res.redirect(req.get('Referrer') || '/');
