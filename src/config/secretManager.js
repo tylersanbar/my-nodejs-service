@@ -1,19 +1,24 @@
 const { SecretManagerServiceClient } = require('@google-cloud/secret-manager');
+const { get } = require('http');
 const client = new SecretManagerServiceClient();
-
-async function getSessionSecret() {
-    const [version] = await client.accessSecretVersion({
-        name: 'projects/' + process.env.GCLOUD_PROJECT + '/secrets/session-secret/versions/latest',
-    });
-    return version.payload.data.toString('utf8');
+const SECRET_KEY_NAMES = {
+    fireBaseApi: 'firebase-api-key',
+    sessionSecret: 'session-secret'
 }
 
-async function getFirebaseApiKey() {
+function getSessionSecret() {
+    return getSecret(SECRET_KEY_NAMES.sessionSecret, 'latest');
+}
+
+function getFirebaseApiKey() {
+    return getSecret(SECRET_KEY_NAMES.fireBaseApi, 'latest');
+}
+
+async function getSecret(secretName, versionRequest) {
     const [version] = await client.accessSecretVersion({
-        name: 'projects/' + process.env.GCLOUD_PROJECT + '/secrets/firebase-api-key/versions/latest',
+        name: 'projects/' + process.env.GCLOUD_PROJECT + '/secrets/' + secretName + '/versions/' + versionRequest,
     });
-    const payload = version.payload.data.toString('utf8');
-    return JSON.parse(payload); // Assuming the Firebase config is stored as a stringified JSON.
+    return version.payload.data.toString();
 }
 
 module.exports = { getSessionSecret, getFirebaseApiKey };
