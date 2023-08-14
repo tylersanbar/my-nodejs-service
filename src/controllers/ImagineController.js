@@ -1,12 +1,12 @@
 const MJMessageModel = require('../models/MJMessageModel');
 
 exports.index = function(req, res) {
-    res.render('imagine', { pageTitle: 'Imagine', loggedIn: false, viewCss: '/css/imagine.css' });
+    res.render('imagine', { pageTitle: 'Imagine', viewCss: '/css/imagine.css' });
 };
 
 exports.view = async function(req, res) {
     const msg = await MJMessageModel.getById(req.params.id);
-    res.render('image', { url: msg.url, pageTitle: 'View Image', viewCss: '/css/image.css' });
+    res.render('image', { url: msg.uri, pageTitle: 'View Image', viewCss: '/css/image.css' });
 };
 
 exports.generate = async function(req, res) {

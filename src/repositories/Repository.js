@@ -34,8 +34,7 @@ class Repository {
     }
 
     async getMessageById(kind, id) {
-        console.log("getMessageById:", id);
-        const query = datastore.createQuery(kind).filter('id', '=', parseInt(id, 10));
+        const query = datastore.createQuery(kind).filter('id', '=', id);
         const [result] = await datastore.runQuery(query);
         return result[0];
     }
